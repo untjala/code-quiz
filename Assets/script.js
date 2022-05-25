@@ -11,8 +11,7 @@ beginBtnEl.addEventListener("click", function (event) {
 timerEl.textContent = timeLeft + " seconds remaining"    
     var timeInterval = setInterval(function () {
         timeLeft--;
-        displayTime();
-        
+
         if (timeLeft > 0) {
             displayCountdown(timeLeft);
         } else {
