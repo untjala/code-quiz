@@ -8,21 +8,25 @@ var timerEl = document.querySelector("#countdown");
 var timeLeft = 60;
 // WHEN I click the start button
 beginBtnEl.addEventListener("click", function (event) {
-timerEl.textContent = timeLeft + " seconds remaining"    
-    var timeInterval = setInterval(function () {
-        timeLeft--;
-
-        if (timeLeft > 0) {
-            displayCountdown(timeLeft);
-        } else {
-            timerEl.textContent = "Times up!";
-            clearInterval(timeInterval)
-        }
-    }, 1000);
-    // startTimer ();    
+    startTimer();
 });
-
+var timeLeft = 60;
 // THEN a timer starts and I am presented with a question
+function startTimer() { 
+timerEl.textContent = timeLeft + " seconds remaining"
+var timeInterval = setInterval(function () {
+    timeLeft--;
+    if (timeLeft > 0) {
+        displayCountdown(timeLeft);
+    } else {
+        timerEl.textContent = "Times up!";
+        clearInterval(timeInterval)
+        // displayMessage();
+    }
+    
+}, 1000);
+}
+startTimer ();
 // function startTimer() { 
 
 // }
