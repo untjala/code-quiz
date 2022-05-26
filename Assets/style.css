@@ -1,0 +1,27 @@
+* {
+    align-content: center;
+    text-align: center;
+    padding: 15px;
+    font-family: 'Plus Jakarta Sans', sans-serif;;
+    
+}
+
+body {
+    background-color: #b1bec4;
+    color: antiquewhite;
+}
+#landing-page button {
+    background-color: #F9E5DF;
+    border: solid 2px #F9E5DF;
+    color: #b1bec4;
+    border-radius: 8px;
+    width: 400px;
+    font-size: large;
+}
+#landing-page button::after {
+    background-color: #E1BEAC;
+}
+/*Quiz Styling and Hider */
+/* #quiz {
+    
+} */
