@@ -11,9 +11,9 @@ var quizButtonOneEl = document.querySelector("#answer1")
 var quizButtonTwoEl = document.querySelector("#answer2")
 var quizButtonThreeEl = document.querySelector("#answer3")
 var quizButtonFourEl = document.querySelector("#answer4")
-
 var quizEl = document.querySelector("#quiz")
 var timeLeft = 60;
+
 // document.getElementById("#answer1").textContent = quizQuestions[0].question
 // document.getElementById("#answer2").textContent = quizQuestions[1].question
 // document.getElementById("#answer3").textContent = quizQuestions[2].question
@@ -26,7 +26,7 @@ var quizQuestions = [
     },
     {
         question: "i, when used in JavaScript, represents:",
-        option: [ "index", "important"],
+        option: ["index", "important"],
         answer: "index"
     },
     {
@@ -66,12 +66,9 @@ function startTimer() {
 }
 // WHEN I answer a question
 function displayQuestions() {
-    quizEl.innerHtml = "";
-    var showQuestionEl = document.createElement("h2")
-    showQuestionEl.textContent = quizQuestions[questionIndex].question;
-    quizEl.appendChild(showQuestionEl);
-    // getElementById("#answer1").textContent = quizQuestions[position].option[1];
+    
 }
+
 //Begin button to start timer and quiz
 beginBtnEl.addEventListener("click", function (event) {
     startTimer();
@@ -82,7 +79,7 @@ beginBtnEl.addEventListener("click", function (event) {
     quizButtonTwoEl.style.display = "inline-block";
     quizButtonThreeEl.style.display = "inline-block";
     quizButtonFourEl.style.display = "inline-block";
-    displayQuestions();
+    ;
 });
 
 function init() {
