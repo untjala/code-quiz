@@ -7,8 +7,17 @@ var beginBtnEl = document.querySelector("#landing-page button");
 var quizHeaderEl = document.querySelector("#question-header")
 var timerEl = document.querySelector("#countdown");
 var quizQuestionsEl = document.querySelector("#questions");
-var quizEl = document.querySelector("#quiz");
+var quizButtonOneEl = document.querySelector("#answer1")
+var quizButtonTwoEl = document.querySelector("#answer2")
+var quizButtonThreeEl = document.querySelector("#answer3")
+var quizButtonFourEl = document.querySelector("#answer4")
+
+var quizEl = document.querySelector("#quiz")
 var timeLeft = 60;
+// document.getElementById("#answer1").textContent = quizQuestions[0].question
+// document.getElementById("#answer2").textContent = quizQuestions[1].question
+// document.getElementById("#answer3").textContent = quizQuestions[2].question
+// document.getElementById("#answer4").textContent = quizQuestions[3].question
 var quizQuestions = [
     {
         question: "Sites and applications made with JavaScript cannot run on mobile devices:",
@@ -17,7 +26,7 @@ var quizQuestions = [
     },
     {
         question: "i, when used in JavaScript, represents:",
-        option: ["indent", "index", "important"],
+        option: [ "index", "important"],
         answer: "index"
     },
     {
@@ -27,17 +36,16 @@ var quizQuestions = [
     },
     {
         question: "A variable declared without a value will return:",
-        option: ["undefined", "unknown", "null"],
+        option: ["undefined", "unknown",],
         answer: "undefined"
     },
     {
         question: "On it's own, (this) will refer to: ",
-        option: ["an undefined variable", "a specfic object", "the global object"],
+        option: ["a specfic object", "the global object"],
         answer: "the global object"
     },
 ];
 var position = 0;
-
 //Timer Duration Message
 function displayMessage() {
     timerEl.textContent = timeLeft + " seconds remaining"
@@ -57,10 +65,12 @@ function startTimer() {
     }, 1000);
 }
 // WHEN I answer a question
-function displayQuestions(position) {
-    quizQuestions.innerHtml = "";
-    for (var i = 0; i < questions.length; i++) {
-    }
+function displayQuestions() {
+    quizEl.innerHtml = "";
+    var showQuestionEl = document.createElement("h2")
+    showQuestionEl.textContent = quizQuestions[questionIndex].question;
+    quizEl.appendChild(showQuestionEl);
+    // getElementById("#answer1").textContent = quizQuestions[position].option[1];
 }
 //Begin button to start timer and quiz
 beginBtnEl.addEventListener("click", function (event) {
@@ -68,24 +78,24 @@ beginBtnEl.addEventListener("click", function (event) {
     welcomeEl.style.display = "none";
     landingEl.style.display = "none";
     quizHeaderEl.style.display = "block";
+    quizButtonOneEl.style.display = "inline-block";
+    quizButtonTwoEl.style.display = "inline-block";
+    quizButtonThreeEl.style.display = "inline-block";
+    quizButtonFourEl.style.display = "inline-block";
     displayQuestions();
 });
-
-
-
-// WHEN the game is over
-// THEN I can save my initials and score 
-function displayEnd() {
-    submitBtnEl.addEventListener("click", function (event) {
-        event.preventDefault();
-    });
-}
 
 function init() {
     quizHeaderEl.style.display = "none";
     submitBtnEl.style.display = "none";
     scoreEl.style.display = "none";
+    quizQuestionsEl.style.display = "none";
+    quizButtonOneEl.style.display = "none";
+    quizButtonTwoEl.style.display = "none";
+    quizButtonThreeEl.style.display = "none";
+    quizButtonFourEl.style.display = "none";
 }
+
 // THEN I am presented with another question
 // questionEl.addEventListener("click", function (event) {
 //     var element = event.target;
@@ -99,13 +109,19 @@ function init() {
 //     }
 // });
 
-init();
+
 // WHEN I answer a question incorrectly
-
 // THEN time is subtracted from the clock
-
 // WHEN all questions are answered or the timer reaches 
+// THEN the game is over 
+function displayEnd() {
+    scoreEl.style.display = "none";
+    submitBtnEl.style.display = "none";
+};
+submitBtnEl.addEventListener("click", function (event) {
+    event.preventDefault();
+    displayEnd();
+});
 
-
-
-// THEN the game is ovee
+// THEN I can save my initials and score 
+init();
