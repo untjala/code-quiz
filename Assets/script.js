@@ -14,10 +14,10 @@ var quizButtonFourEl = document.querySelector("#answer4")
 var quizEl = document.querySelector("#quiz")
 var timeLeft = 60;
 
-// document.getElementById("#answer1").textContent = quizQuestions[0].question
-// document.getElementById("#answer2").textContent = quizQuestions[1].question
-// document.getElementById("#answer3").textContent = quizQuestions[2].question
-// document.getElementById("#answer4").textContent = quizQuestions[3].question
+document.getElementById("#answer1").textContent = quizQuestions[0].question
+document.getElementById("#answer2").textContent = quizQuestions[1].question
+document.getElementById("#answer3").textContent = quizQuestions[2].question
+document.getElementById("#answer4").textContent = quizQuestions[3].question
 var quizQuestions = [
     {
         question: "Sites and applications made with JavaScript cannot run on mobile devices:",
