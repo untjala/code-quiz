@@ -57,11 +57,11 @@ function startTimer() {
     }, 1000);
 }
 // WHEN I answer a question
-function displayQuestions() {
-    var questionsEl = quizQuestionsEl
-    questionsEl.innerHtml = "";
+function displayQuestions(position) {
+    quizQuestions.innerHtml = "";
+    for (var i = 0; i < questions.length; i++) {
+    }
 }
-
 //Begin button to start timer and quiz
 beginBtnEl.addEventListener("click", function (event) {
     startTimer();
@@ -108,4 +108,4 @@ init();
 
 
 
-// THEN the game is over
+// THEN the game is ovee
