@@ -1,17 +1,42 @@
-// var state = "quizEl";
-//landingEl.style.display = none
 // Project Variables 
-var welcomeEl =document.querySelector ("#welcome")
+var welcomeEl = document.querySelector("#welcome")
 var landingEl = document.querySelector("#landing-page");
-var quizEl = document.querySelector("#quiz");
 var scoreEl = document.querySelector("#score-page");
-var beginBtnEl = document.querySelector("#landing-page button");
 var submitBtnEl = document.querySelector("#score-page button")
-var quizQuestionEl = document.querySelector("#question-page");
+var beginBtnEl = document.querySelector("#landing-page button");
 var quizHeaderEl = document.querySelector("#question-header")
 var timerEl = document.querySelector("#countdown");
+var quizQuestionsEl = document.querySelector("#questions");
+var quizEl = document.querySelector("#quiz");
 var timeLeft = 60;
-var questions = document.querySelector("#questions");
+var quizQuestions = [
+    {
+        question: "Sites and applications made with JavaScript cannot run on mobile devices:",
+        option: ["true", "false"],
+        answer: "true"
+    },
+    {
+        question: "i, when used in JavaScript, represents:",
+        option: ["indent", "index", "important"],
+        answer: "index"
+    },
+    {
+        question: "A for loop MUST contain an if statemnt:",
+        option: ["true", "false"],
+        answer: "false"
+    },
+    {
+        question: "A variable declared without a value will return:",
+        option: ["undefined", "unknown", "null"],
+        answer: "undefined"
+    },
+    {
+        question: "On it's own, (this) will refer to: ",
+        option: ["an undefined variable", "a specfic object", "the global object"],
+        answer: "the global object"
+    },
+];
+var position = 0;
 
 //Timer Duration Message
 function displayMessage() {
@@ -31,79 +56,56 @@ function startTimer() {
 
     }, 1000);
 }
+// WHEN I answer a question
+function displayQuestions() {
+    var questionsEl = quizQuestionsEl
+    questionsEl.innerHtml = "";
+}
+
 //Begin button to start timer and quiz
 beginBtnEl.addEventListener("click", function (event) {
     startTimer();
-    if (startTimer) {
-        welcomeEl.style.display = "none";
-        landingEl.style.display = "none";
-        scoreEl.style.display = "none";
-    } else {
-        quizEl.style.display = "none";
-    }
+    welcomeEl.style.display = "none";
+    landingEl.style.display = "none";
+    quizHeaderEl.style.display = "block";
+    displayQuestions();
 });
 
-//Quiz Question Array
-var quizQuestions = [
-    {
-        questionOne,
-        question: "Sites and applications made with JavaScript cannot run on mobile devices:",
-        option: ["true", "false"],
-        answer: "true"
-    },
-    {
-        questionTwo,
-        question: "i, when used in JavaScript, represents:",
-        option: ["indent", "index", "important"],
-        answer: "index"
-    },
-    {
-        questionThree,
-        question: "A for loop MUST contain an if statemnt:",
-        option: ["true", "false"],
-        answer: "false"
-    },
-    {
-        questionFour,
-        question: "A variable declared without a value will return:",
-        option: ["undefined", "unknown", "null"],
-        answer: "undefined"
-    },
-    {
-        questionFive,
-        question: "On it's own, (this) will refer to: ",
-        option: ["an undefined variable", "a specfic object", "the global object"],
-        answer: "the global object"
-    },
-];
-// WHEN I answer a question
-// quizQuestions.addEventListener("click", function (event) {
-//     if (increase === 5) {
-//         response.textContent = "You Got It"
-//         points.textContent = timeLeft
-//     } else if {
-//         event.target.textContent !===[increase -1].correct
-//     }
-// })
-function renderQuestions (currentQuestion) {
-    questions.textContent = quizQuestions[0].question;
+
+
+// WHEN the game is over
+// THEN I can save my initials and score 
+function displayEnd() {
+    submitBtnEl.addEventListener("click", function (event) {
+        event.preventDefault();
+    });
 }
 
+function init() {
+    quizHeaderEl.style.display = "none";
+    submitBtnEl.style.display = "none";
+    scoreEl.style.display = "none";
+}
 // THEN I am presented with another question
+// questionEl.addEventListener("click", function (event) {
+//     var element = event.target;
+//     if (element.matches(quizQuestionsEl)) {
+//         position++;
+//         if (position < quizQuestions.length) {
+//             displayQuestions();
+//         } else {
+//             displayEnd();
+//         }
+//     }
+// });
 
+init();
 // WHEN I answer a question incorrectly
 
 // THEN time is subtracted from the clock
 
 // WHEN all questions are answered or the timer reaches 
 
+
+
 // THEN the game is over
-
-
-// WHEN the game is over
-// submitBtnEl.addEventListener("click", function (event) {
-//     event.preventDefault ();
-//         landingEl.style.display = "none";
-//     }
-// });
-// THEN I can save my initials and score 
