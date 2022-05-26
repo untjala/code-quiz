@@ -1,35 +1,39 @@
-// GIVEN I am taking a code quiz
-var landingPageEl = document.querySelector("#landing-page")
-var quizEl = document.querySelector("#quiz")
-var endPageEl = document.querySelector("#end-page")
-var beginBtnEl = document.querySelector("#landing-page button")
-var quizQuestionEl = document.querySelector("#question-page #questions")
+var state = "landingEl";
+// Project Variables 
+var landingEl = document.querySelector("#landing-page");
+var quizEl = document.querySelector("#quiz");
+var scoreEl = document.querySelector("#score-page");
+var beginBtnEl = document.querySelector("#landing-page button");
+var quizQuestionEl = document.querySelector("#question-page #question-header");
 var timerEl = document.querySelector("#countdown");
 var timeLeft = 60;
-// WHEN I click the start button
+var questions = document.querySelector("#questions");
+
+//Timer Duration Message
+function displayMessage () {
+    timerEl.textContent = timeLeft + " seconds remaining"
+}
+//Funtion to run timer
+function startTimer() {
+    displayMessage ();
+    var timerInterval = setInterval(function () {
+        timeLeft--;
+        displayMessage ();
+//Clears timer and sends end message
+        if (timeLeft === 0) {
+          timerEl.textContent = "Times up!";
+            clearInterval(timerInterval)
+        }
+
+    }, 1000);
+}
+//Begin button to start timer and quiz
 beginBtnEl.addEventListener("click", function (event) {
     startTimer();
 });
-var timeLeft = 60;
-// THEN a timer starts and I am presented with a question
-function startTimer() { 
-timerEl.textContent = timeLeft + " seconds remaining"
-var timeInterval = setInterval(function () {
-    timeLeft--;
-    if (timeLeft > 0) {
-        displayCountdown(timeLeft);
-    } else {
-        timerEl.textContent = "Times up!";
-        clearInterval(timeInterval)
-        // displayMessage();
-    }
-    
-}, 1000);
-}
-startTimer ();
-// function startTimer() { 
 
-// }
+
+
 
 // WHEN I answer a question
 
