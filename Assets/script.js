@@ -7,7 +7,7 @@ var beginBtnEl = document.querySelector("#landing-page button");
 var quizHeaderEl = document.querySelector("#question-header")
 var timerEl = document.querySelector("#countdown");
 var quizQuestionsEl = document.querySelector("#questions");
-var options = document.querySelector("#options");
+var optionsEl = document.querySelector("#options");
 var quizEl = document.querySelector("#quiz");
 var timeLeft = 60;
 var currentIndex = 0;
@@ -16,30 +16,67 @@ var currentIndex = 0;
 var quizQuestions = [
     {
         title: "Sites made with JavaScript cannot run on mobile devices:",
-        option: ["true", "false",],
-        correct: 1
+        optionA: "true",
+        optionB: "false",
+        correct: "true"
     },
     {
         title: "i, when used in JavaScript, represents:",
-        option: ["index", "important",],
-        correct: 1
+        optionA: "index",
+        optionB: "important",
+        correct: "index"
     },
     {
-        title: "A for loop MUST contain an if statement:",
-        option: ["true", "false",],
-        correct: 2
+        title: "A function must include:",
+        optionA: "parentheses",
+        optionB: "square brackets",
+        correct: "paraentheses"
     },
     {
         title: "A variable declared without a value will return:",
-        option: ["undefined", "unknown",],
-        correct: 1
+        optionA: "undefined",
+        optionB: "unknown",
+        correct: "undefined"
     },
     {
         title: "On it's own, (this) will refer to: ",
-        option: ["a specfic object", "the global object",],
-        correct: 2
+        optionA: "a specfic object",
+        optionB: "the global object",
+        correct: "the global object"
     },
 ];
+
+function displayQuestions() {
+    quizQuestionsEl.innerHTML = "";
+    optionsEl.innerHTML = "";
+    var buttonA = document.createElement("button");
+    var buttonB = document.createElement("button");
+    var questionDisplay = document.createElement("p");
+
+    questionDisplay.textContent = quizQuestions[currentIndex].title
+    buttonA.textContent = quizQuestions[currentIndex].optionA
+    buttonB.textContent = quizQuestions[currentIndex].optionB
+
+    quizQuestionsEl.appendChild(questionDisplay);
+    optionsEl.appendChild(buttonA);
+    optionsEl.appendChild(buttonB);
+    quizQuestionsEl.appendChild(optionsEl)
+}
+
+optionsEl.addEventListener("click", function (event) {
+    if (event.target.matches("button")) {
+        if (event.target.textContent !== quizQuestions[currentIndex].correct) {
+            timeLeft = timeLeft - 10;
+        }
+        
+        currentIndex++;
+
+        if (currentIndex < quizQuestions.length) {
+            displayQuestions();
+        }
+    }
+});
+
 //Hides pages upon launch
 function init() {
     quizHeaderEl.style.display = "none";
@@ -63,37 +100,39 @@ function startTimer() {
             timerEl.textContent = "Time's up!";
             clearInterval(timerInterval)
         }
-        
+
     }, 1000);
     displayQuestions();
 }
 // WHEN I answer a question
-function displayQuestions() {
-    var listOfAnswers = quizQuestions[currentIndex].option;
-    var currentQuestion = quizQuestions[currentIndex];
-    var questionTitle = document.querySelector("#questions")
-    questionTitle.textContent = currentQuestion.title
-    for (var i = 0; i < listOfAnswers.length; i++) {
-        var buttonEl = document.createElement("button");
-        buttonEl.textContent = listOfAnswers[i];
-        quizQuestionsEl.appendChild(buttonEl);
-        quizQuestionsEl.onclick = function () {
-            quizQuestionsEl.innerHTML = "";
-            answerCheck();
-        }
-    }
-}
+// function displayQuestions() {
+//     var listOfAnswers = quizQuestions[currentIndex].option;
+//     var currentQuestion = quizQuestions[currentIndex];
+//     var questionTitle = document.querySelector("#questions")
+//     questionTitle.textContent = currentQuestion.title
+//     //TUTOR ASSISTANCE
+//     for (var i = 0; i < listOfAnswers.length; i++) {
+//         var optionButtonEl = document.createElement("button");
+//        optionButtonEl.textContent = listOfAnswers[i];
+//         quizQuestionsEl.appendChild(optionButtonEl);
+//         quizQuestionsEl.onclick = function () {
+//             //END OF TUTOR ASSISTANCE
+//             quizQuestionsEl.innerHTML = "";
+//             answerCheck();
+//         }
+//     }
+// }
 //Function to check user's answer agaisnt correct answer
 function answerCheck() {
     currentIndex++;
     quizQuestionsEl.innerHTML = "";
     displayQuestions();
-    if (userAnswer !== (".quizQuestions[currentIndex].correct")) {
+    if (userAnswer == (".quizQuestions[currentIndex].correct")) {
         //alerts for testing if statement -- remove later
+        answerCheck.textContent = "Correct!"
+    } else {
         answerCheck.textContent = "Incorrect!"
         timeLeft -= 10;
-    } else {
-        answerCheck.textContent = "Correct!"
     }
     var userAnswer = quizQuestions[currentIndex].option;
     displayQuestions();
