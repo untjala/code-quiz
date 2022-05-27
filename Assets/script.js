@@ -1,4 +1,4 @@
-// Project Variables 
+// Global Variables 
 var welcomeEl = document.querySelector("#welcome")
 var landingEl = document.querySelector("#landing-page");
 var scoreEl = document.querySelector("#score-page");
@@ -11,6 +11,7 @@ var options = document.querySelector("#options");
 var quizEl = document.querySelector("#quiz");
 var timeLeft = 60;
 var currentIndex = 0;
+
 //Array of quiz questions
 var quizQuestions = [
     {
@@ -39,6 +40,12 @@ var quizQuestions = [
         correct: 2
     },
 ];
+//Hides pages upon launch
+function init() {
+    quizHeaderEl.style.display = "none";
+    submitBtnEl.style.display = "none";
+    scoreEl.style.display = "none";
+}
 
 
 //Timer Duration Message
@@ -56,7 +63,7 @@ function startTimer() {
             timerEl.textContent = "Time's up!";
             clearInterval(timerInterval)
         }
-
+        
     }, 1000);
     displayQuestions();
 }
@@ -81,11 +88,12 @@ function answerCheck() {
     currentIndex++;
     quizQuestionsEl.innerHTML = "";
     displayQuestions();
-    if (userAnswer.matches(".quizQuestions[currentIndex].correct")) {
+    if (userAnswer !== (".quizQuestions[currentIndex].correct")) {
         //alerts for testing if statement -- remove later
-        alert("Good work!")
+        answerCheck.textContent = "Incorrect!"
+        timeLeft -= 10;
     } else {
-        alert("Sorry!")
+        answerCheck.textContent = "Correct!"
     }
     var userAnswer = quizQuestions[currentIndex].option;
     displayQuestions();
@@ -103,12 +111,6 @@ function displayEnd() {
     };
 }
 
-//Hides pages upon launch
-function init() {
-    quizHeaderEl.style.display = "none";
-    submitBtnEl.style.display = "none";
-    scoreEl.style.display = "none";
-}
 //Begin button to start timer and quiz
 beginBtnEl.addEventListener("click", function (event) {
     startTimer();
