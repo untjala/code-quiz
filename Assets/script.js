@@ -66,7 +66,7 @@ function displayQuestions() {
     var currentQuestion = quizQuestions[currentIndex];
     var questionTitle = document.querySelector("#questions")
     questionTitle.textContent = currentQuestion.title
-    
+
     for (var i = 0; i < listOfAnswers.length; i++) {
         var buttonEl = document.createElement("button");
         buttonEl.textContent = listOfAnswers[i];
@@ -116,14 +116,4 @@ submitBtnEl.addEventListener("click", function (event) {
     event.preventDefault();
     displayEnd();
 });
-
-// THEN I am presented with another question
-
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 
-// THEN the game is over 
-
-
-// THEN I can save my initials and score 
 init();
