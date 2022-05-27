@@ -1,5 +1,4 @@
 * {
-    align-content: center;
     text-align: center;
     padding: 15px;
     font-family: 'Plus Jakarta Sans', sans-serif;;
@@ -9,14 +8,22 @@
 body {
     background-color: #b1bec4;
     color: antiquewhite;
+    
 }
-#landing-page button  {
+button  {
     background-color: #F9E5DF;
     border: solid 2px #F9E5DF;
     color: #b1bec4;
     border-radius: 8px;
     width: 400px;
     font-size: large;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    overflow: auto;
+}
+#quiz-questions title {
+    text-align: center;
 }
 
 #landing-page button::after {
