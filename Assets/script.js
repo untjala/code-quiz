@@ -11,7 +11,7 @@ var options = document.querySelector("#options");
 var quizEl = document.querySelector("#quiz");
 var timeLeft = 60;
 var currentIndex = 0;
-
+//Array of quiz questions
 var quizQuestions = [
     {
         title: "Sites made with JavaScript cannot run on mobile devices:",
@@ -52,8 +52,8 @@ function startTimer() {
         timeLeft--;
         displayMessage();
         //Clears timer and sends end message
-        if (timeLeft === 0) {
-            timerEl.textContent = "Times up!";
+        if (timeLeft <= 0) {
+            timerEl.textContent = "Time's up!";
             clearInterval(timerInterval)
         }
 
@@ -66,7 +66,6 @@ function displayQuestions() {
     var currentQuestion = quizQuestions[currentIndex];
     var questionTitle = document.querySelector("#questions")
     questionTitle.textContent = currentQuestion.title
-
     for (var i = 0; i < listOfAnswers.length; i++) {
         var buttonEl = document.createElement("button");
         buttonEl.textContent = listOfAnswers[i];
@@ -77,28 +76,34 @@ function displayQuestions() {
         }
     }
 }
-
+//Function to check user's answer agaisnt correct answer
 function answerCheck() {
     currentIndex++;
     quizQuestionsEl.innerHTML = "";
     displayQuestions();
-    var userAnswer = quizQuestions[currentIndex].option;
     if (userAnswer.matches(".quizQuestions[currentIndex].correct")) {
-        alert("Good work")
+        //alerts for testing if statement -- remove later
+        alert("Good work!")
     } else {
-        alert("BOOOOOO")
+        alert("Sorry!")
     }
+    var userAnswer = quizQuestions[currentIndex].option;
     displayQuestions();
 }
+//Sends timer end message, will clear states in future
 function displayEnd() {
-    if (currentIndex < quizQuestions.length) {
-        welcomeEl.style.display = "none";
-        landingEl.style.display = "none";
-        quizHeaderEl.style.display = "none";
+    if (timeLeft = secondsRemaining) {
+        var endMessage = document.createElement("p")
+        clearInterval(timerInterval);
+        endMessage.textContent = "Your score is: " + secondsRemaining;
+        quizQuestionsEl.appendChild(endMessage)
+        // welcomeEl.style.display = "none";
+        // landingEl.style.display = "none";
+        // quizHeaderEl.style.display = "none";
     };
 }
 
-
+//Hides pages upon launch
 function init() {
     quizHeaderEl.style.display = "none";
     submitBtnEl.style.display = "none";
@@ -111,6 +116,7 @@ beginBtnEl.addEventListener("click", function (event) {
     landingEl.style.display = "none";
     quizHeaderEl.style.display = "block";
 
+    //Submit button -- needs more content + an end timer function
 });
 submitBtnEl.addEventListener("click", function (event) {
     event.preventDefault();
